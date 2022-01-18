@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 function Groups() {
     return <h1>Groups</h1>;
