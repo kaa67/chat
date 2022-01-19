@@ -1,0 +1,18 @@
+.warning {
+    background-color: #cccccc;
+    color: red;
+    padding: 8px;
+    margin-top: 24px;
+}
+
+.navItem {
+    padding: 4px 8px;
+}
+
+a {
+    padding: 4px 8px;
+    background-color: #eeeeee;
+    text-decoration: underline;
+    color:darkblue;
+    font-weight: bold;
+}
