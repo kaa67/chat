@@ -1,11 +1,23 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Menu = () => (
-    <nav>
-        <Link to="/">Main</Link>/<Link to="login">Login</Link>/
-        <Link to="profile">Profile</Link>/<Link to="register">Register</Link>
-    </nav>
-);
+import { getIsGuest } from '../../store/selectors/userSelector';
+
+import NavItem from './NavItem';
+import NavLogoutItem from './NavLogoutItem';
+
+const Menu = () => {
+    const isGuest: boolean = useSelector(getIsGuest);
+
+    return (
+        <nav>
+            <NavItem name="Chat" to="/" />
+            {isGuest && <NavItem name="Login" to="/login" />}
+            {isGuest && <NavItem name="Register" to="/register" />}
+            {!isGuest && <NavItem name="Profile" to="/profile" />}
+            {!isGuest && <NavLogoutItem />}
+        </nav>
+    );
+};
 
 export default Menu;

@@ -1,24 +1,47 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { getIsGuest } from '../store/selectors/userSelector';
+import { setProfile } from '../store/slices/userSlice';
+import { IUser } from '../interfaces';
 
 const RegisterPage = () => {
+    const isGuest = useSelector(getIsGuest);
+    const navigate = useNavigate();
+
+    if (!isGuest) navigate('/', { replace: true });
+
+    const dispatch = useDispatch();
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const profile: IUser = {
+            id: Math.ceil(Math.random() * 100),
+            name: formData.get('name') as string,
+            email: formData.get('email') as string,
+        };
+        dispatch(setProfile(profile));
+    };
+
     return (
         <>
-            <h1>RegisterPage</h1>
-            <form>
+            <h2>RegisterPage</h2>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="register_name">Name</label>
                 <br />
-                <input id="register_name" type="email" />
+                <input name="name" id="register_name" type="text" />
                 <br />
                 <br />
                 <label htmlFor="register_email">e-mail</label>
                 <br />
-                <input id="register_email" type="email" />
+                <input name="email" id="register_email" type="email" />
                 <br />
                 <br />
                 <label htmlFor="register_password">Password</label>
                 <br />
-                <input id="register_password" type="password" />
+                <input name="password" id="register_password" type="password" />
                 <br />
                 <br />
                 <button type="submit">Register</button>&nbsp; or{' '}
