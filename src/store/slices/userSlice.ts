@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IUser, IUserSlice } from '../../interfaces';
+import { IUser, IUserSlice, ITick } from '../../interfaces';
 
 const initialState: IUserSlice = {
     profile: null,
@@ -26,6 +26,15 @@ export const userSlice = createSlice({
         },
         setUsers: (state, action: PayloadAction<IUser[]>) => {
             state.users = action.payload;
+        },
+    },
+    extraReducers: {
+        'tick/fetchTick/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
         },
     },
 });
