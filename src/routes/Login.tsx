@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getIsGuest } from '../store/selectors/userSelector';
 import { selectProfile } from '../store/slices/userSlice';
 
-const LoginPage = () => {
+const Login = () => {
     const isGuest = useSelector(getIsGuest);
     const navigate = useNavigate();
 
@@ -18,11 +18,12 @@ const LoginPage = () => {
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string;
         dispatch(selectProfile(email));
+        navigate('/', { replace: true });
     };
 
     return (
         <>
-            <h2>LoginPage</h2>
+            <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="login_email">e-mail</label>
                 <br />
@@ -42,4 +43,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default Login;

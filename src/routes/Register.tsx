@@ -6,11 +6,11 @@ import { getIsGuest } from '../store/selectors/userSelector';
 import { setProfile } from '../store/slices/userSlice';
 import { IUser } from '../interfaces';
 
-const RegisterPage = () => {
+const Register = () => {
     const isGuest = useSelector(getIsGuest);
     const navigate = useNavigate();
 
-    if (!isGuest) navigate('/', { replace: true });
+    if (!isGuest) navigate('/');
 
     const dispatch = useDispatch();
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -23,11 +23,12 @@ const RegisterPage = () => {
             email: formData.get('email') as string,
         };
         dispatch(setProfile(profile));
+        navigate('/');
     };
 
     return (
         <>
-            <h2>RegisterPage</h2>
+            <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="register_name">Name</label>
                 <br />
@@ -51,4 +52,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default Register;

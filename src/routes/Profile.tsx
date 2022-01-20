@@ -3,26 +3,23 @@ import { useSelector } from 'react-redux';
 
 import { getProfile } from '../store/selectors/userSelector';
 
-const ProfilePage = () => {
+const Profile = () => {
     const profile = useSelector(getProfile);
 
     const [edit, setEdit] = React.useState(false);
     const [name, setName] = React.useState(profile?.name || '');
-    const [email, setEmail] = React.useState(profile?.email || '');
 
     const editTo = (on: boolean) => () => setEdit(on);
 
     const nameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
         setName(e.target.value);
-    const emailChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setEmail(e.target.value);
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
     };
 
     return (
         <>
-            <h2>ProfilePage</h2>
+            <h2>Profile</h2>
             {edit ? (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="profile_name">Name</label>
@@ -38,10 +35,10 @@ const ProfilePage = () => {
                     <label htmlFor="profile_email">e-mail</label>
                     <br />
                     <input
-                        value={email}
+                        value={profile?.email || ''}
                         id="profile_email"
                         type="email"
-                        onChange={emailChange}
+                        disabled
                     />
                     <br />
                     <br />
@@ -63,4 +60,4 @@ const ProfilePage = () => {
     );
 };
 
-export default ProfilePage;
+export default Profile;
