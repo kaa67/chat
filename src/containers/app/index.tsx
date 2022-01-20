@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Layout from './Layout';
-import Chat from '../../pages/ChatPage';
-import Login from '../../pages/LoginPage';
-import Profile from '../../pages/ProfilePage';
-import Register from '../../pages/RegisterPage';
+import { Layout, Chat, Login, Profile, Register } from '../../routes';
 
 const App = () => (
     <Routes>

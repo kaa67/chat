@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Menu from '../menu';
-
-const Title = () => <h1>Multirooms Chat</h1>;
+import Menu from '../containers/menu';
 
 const Layout = () => (
     <>
-        <Title />
+        <h1>Multirooms Chat</h1>
         <Menu />
         <Outlet />
     </>

@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { getIsGuest } from '../store/selectors/userSelector';
 
-import Groups from '../containers/groups';
 import Messages from '../containers/messages';
 
-const ChatPage = () => {
+const Chat = () => {
     const isGuest = useSelector(getIsGuest);
 
     if (isGuest)
@@ -16,19 +15,16 @@ const ChatPage = () => {
 
     return (
         <>
-            <h2>ChatPage</h2>
+            <h2>Chat</h2>
             {isGuest ? (
                 <div className="warning">
                     Access is restricted. Please log in
                 </div>
             ) : (
-                <>
-                    <Groups />
-                    <Messages />
-                </>
+                <Messages />
             )}
         </>
     );
 };
 
-export default ChatPage;
+export default Chat;

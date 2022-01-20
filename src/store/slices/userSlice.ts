@@ -8,7 +8,7 @@ const initialState: IUserSlice = {
 };
 
 export const userSlice = createSlice({
-    name: 'counter',
+    name: 'user',
     initialState,
     reducers: {
         setProfile: (state, action: PayloadAction<IUser | null>) => {
