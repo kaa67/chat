@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getIsGuest } from '../store/selectors/userSelector';
-import { selectProfile } from '../store/slices/userSlice';
+import { userLogin } from '../store/thunks/userThunk';
 
 const Login = () => {
     const isGuest = useSelector(getIsGuest);
@@ -17,8 +17,9 @@ const Login = () => {
 
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string;
-        dispatch(selectProfile(email));
-        navigate('/', { replace: true });
+        const password = formData.get('password') as string;
+        dispatch(userLogin({ email, password }));
+        // navigate('/', { replace: true });
     };
 
     return (

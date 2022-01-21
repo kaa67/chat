@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getIsGuest } from '../store/selectors/userSelector';
-import { setProfile } from '../store/slices/userSlice';
-import { IUser } from '../interfaces';
+import { IUserRegister } from '../interfaces';
+import { userRegister } from '../store/thunks/userThunk';
 
 const Register = () => {
     const isGuest = useSelector(getIsGuest);
@@ -17,13 +17,13 @@ const Register = () => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const profile: IUser = {
-            id: Math.ceil(Math.random() * 100),
+        const registerData: IUserRegister = {
             name: formData.get('name') as string,
             email: formData.get('email') as string,
+            password: formData.get('password') as string,
         };
-        dispatch(setProfile(profile));
-        navigate('/');
+        dispatch(userRegister(registerData));
+        // navigate('/');
     };
 
     return (
@@ -45,7 +45,7 @@ const Register = () => {
                 <input name="password" id="register_password" type="password" />
                 <br />
                 <br />
-                <button type="submit">Register</button>&nbsp; or{' '}
+                <button type="submit">Register</button> or&nbsp;
                 <Link to="/login">login</Link>
             </form>
         </>

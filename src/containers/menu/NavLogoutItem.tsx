@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { setProfile } from '../../store/slices/userSlice';
+import { userLogout } from '../../store/thunks/userThunk';
 
 const NavLogoutItem = () => {
     const navigate = useNavigate();
@@ -11,8 +11,8 @@ const NavLogoutItem = () => {
     const logoutHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
 
-        dispatch(setProfile(null));
-        navigate('/', { replace: true });
+        dispatch(userLogout());
+        navigate('/');
     };
 
     return (

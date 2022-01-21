@@ -16,3 +16,7 @@ a {
     color:darkblue;
     font-weight: bold;
 }
+
+small {
+    color: #cccccc;
+}
