@@ -3,10 +3,10 @@ import * as React from 'react';
 import { IMessageProps } from '../../interfaces';
 
 const Message = (props: IMessageProps) => (
-    <div>
+    <div className="message">
         <div>
             <b>{props.userName}</b>
-            {props.timeStamp}
+            <small>{props.timeStamp}</small>
         </div>
         {props.message}
     </div>

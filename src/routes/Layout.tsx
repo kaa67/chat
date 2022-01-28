@@ -6,12 +6,6 @@ import Errors from '../containers/errors';
 
 const Layout = () => (
     <>
-        <h1>
-            <del>
-                <small>Multirooms</small>
-            </del>
-            Simple Chat
-        </h1>
         <Menu />
         <Outlet />
         <Errors />
