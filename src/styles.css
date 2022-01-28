@@ -1,3 +1,7 @@
+body, html {
+    background-color: lightgoldenrodyellow;
+}
+
 .warning {
     color: red;
     padding: 8px;
@@ -30,4 +34,20 @@ small {
     background-color: #ffbbbb;
     text-shadow: 2px 2px 2px gray;
     padding: 4px;
+}
+
+.message {
+    margin-top: 4px;
+    background-color: #eeeeee;
+    border: solid 1px #bbbbbb;
+    text-shadow: 2px 2px 2px gray;
+    padding: 4px;
+}
+
+.message b {
+    margin-left: 8px;
+}
+
+.message small {
+    color: darkslategray;
 }

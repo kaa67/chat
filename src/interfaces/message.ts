@@ -1,7 +1,7 @@
 export interface IMessage {
     id: number;
     timeStamp: number;
-    userId: number;
+    user_id: number;
     message: string;
 }
 
@@ -11,6 +11,6 @@ export interface IMessageSlice {
 
 export interface IMessageProps {
     userName: string | number;
-    timeStamp: number;
+    timeStamp: string;
     message: string;
 }
