@@ -2,31 +2,36 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUserLogin, IUserRegister } from '../../interfaces';
 
 import http from './http';
-import { fetchTick } from './tickThunk';
 
 export const userRegister = createAsyncThunk(
-    'user/userRegister',
-    async (registerData: IUserRegister, asyncApi) => {
-        await http.post('register', registerData);
+    'user/register',
+    async (registerData: IUserRegister) => {
+        const result = await http.post('register', registerData);
 
-        asyncApi.dispatch(fetchTick);
+        return result.data;
     },
 );
 
 export const userLogin = createAsyncThunk(
-    'user/userLogin',
-    async (loginData: IUserLogin, asyncApi) => {
-        await http.post('login', loginData);
+    'user/login',
+    async (loginData: IUserLogin) => {
+        const result = await http.post('login', loginData);
 
-        asyncApi.dispatch(fetchTick);
+        return result.data;
     },
 );
 
-export const userLogout = createAsyncThunk(
-    'user/userLogout',
-    async (_, asyncApi) => {
-        await http.get('logout');
+export const userLogout = createAsyncThunk('user/logout', async () => {
+    const result = await http.get('logout');
 
-        asyncApi.dispatch(fetchTick);
+    return result.data;
+});
+
+export const userUpdate = createAsyncThunk(
+    'user/update',
+    async (name: string) => {
+        const result = await http.post('update', { name });
+
+        return result.data;
     },
 );

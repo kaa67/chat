@@ -10,6 +10,14 @@ const App = () => (
             <Route path="login" element={<Login />} />
             <Route path="profile" element={<Profile />} />
             <Route path="register" element={<Register />} />
+            <Route
+                path="*"
+                element={
+                    <main style={{ padding: '1rem' }}>
+                        <p>Select menu item pls!</p>
+                    </main>
+                }
+            />
         </Route>
     </Routes>
 );

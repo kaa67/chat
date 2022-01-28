@@ -15,7 +15,37 @@ export const messageSlice = createSlice({
         },
     },
     extraReducers: {
-        'tick/fetchTick/fulfilled': (
+        'tick/tick/fulfilled': (
+            state: IMessageSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.messages = action.payload.messages;
+        },
+        'user/login/fulfilled': (
+            state: IMessageSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.messages = action.payload.messages;
+        },
+        'user/register/fulfilled': (
+            state: IMessageSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.messages = action.payload.messages;
+        },
+        'message/add/fulfilled': (
+            state: IMessageSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.messages = action.payload.messages;
+        },
+        'user/logout/fulfilled': (
+            state: IMessageSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.messages = action.payload.messages;
+        },
+        'user/update/fulfilled': (
             state: IMessageSlice,
             action: PayloadAction<ITick>,
         ) => {

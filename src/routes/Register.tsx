@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getIsGuest } from '../store/selectors/userSelector';
+import { clearErrors } from '../store/slices/commonSlice';
 import { IUserRegister } from '../interfaces';
 import { userRegister } from '../store/thunks/userThunk';
 
@@ -26,23 +27,40 @@ const Register = () => {
         // navigate('/');
     };
 
+    const clearErr = () => dispatch(clearErrors);
+
     return (
         <>
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="register_name">Name</label>
                 <br />
-                <input name="name" id="register_name" type="text" />
+                <input
+                    onChange={clearErr}
+                    name="name"
+                    id="register_name"
+                    type="text"
+                />
                 <br />
                 <br />
                 <label htmlFor="register_email">e-mail</label>
                 <br />
-                <input name="email" id="register_email" type="email" />
+                <input
+                    onChange={clearErr}
+                    name="email"
+                    id="register_email"
+                    type="email"
+                />
                 <br />
                 <br />
                 <label htmlFor="register_password">Password</label>
                 <br />
-                <input name="password" id="register_password" type="password" />
+                <input
+                    onChange={clearErr}
+                    name="password"
+                    id="register_password"
+                    type="password"
+                />
                 <br />
                 <br />
                 <button type="submit">Register</button> or&nbsp;

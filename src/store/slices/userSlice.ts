@@ -19,7 +19,42 @@ export const userSlice = createSlice({
         },
     },
     extraReducers: {
-        'tick/fetchTick/fulfilled': (
+        'tick/tick/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/login/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/register/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'message/add/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/logout/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/update/fulfilled': (
             state: IUserSlice,
             action: PayloadAction<ITick>,
         ) => {
