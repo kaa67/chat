@@ -3,15 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { fetchTick } from './store/thunks/tickThunk';
-
 import store from './store';
 import App from './containers/app';
 import * as serviceWorker from './serviceWorker';
 
 import './styles.css';
-
-store.dispatch(fetchTick());
 
 ReactDOM.render(
     <React.StrictMode>
