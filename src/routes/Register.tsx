@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getIsGuest } from '../store/selectors/userSelector';
-import { setProfile } from '../store/slices/userSlice';
-import { IUser } from '../interfaces';
+import { clearErrors } from '../store/slices/commonSlice';
+import { IUserRegister } from '../interfaces';
+import { userRegister } from '../store/thunks/userThunk';
 
 const Register = () => {
     const isGuest = useSelector(getIsGuest);
@@ -17,14 +18,16 @@ const Register = () => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const profile: IUser = {
-            id: Math.ceil(Math.random() * 100),
+        const registerData: IUserRegister = {
             name: formData.get('name') as string,
             email: formData.get('email') as string,
+            password: formData.get('password') as string,
         };
-        dispatch(setProfile(profile));
-        navigate('/');
+        dispatch(userRegister(registerData));
+        // navigate('/');
     };
+
+    const clearErr = () => dispatch(clearErrors);
 
     return (
         <>
@@ -32,20 +35,35 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="register_name">Name</label>
                 <br />
-                <input name="name" id="register_name" type="text" />
+                <input
+                    onChange={clearErr}
+                    name="name"
+                    id="register_name"
+                    type="text"
+                />
                 <br />
                 <br />
                 <label htmlFor="register_email">e-mail</label>
                 <br />
-                <input name="email" id="register_email" type="email" />
+                <input
+                    onChange={clearErr}
+                    name="email"
+                    id="register_email"
+                    type="email"
+                />
                 <br />
                 <br />
                 <label htmlFor="register_password">Password</label>
                 <br />
-                <input name="password" id="register_password" type="password" />
+                <input
+                    onChange={clearErr}
+                    name="password"
+                    id="register_password"
+                    type="password"
+                />
                 <br />
                 <br />
-                <button type="submit">Register</button>&nbsp; or{' '}
+                <button type="submit">Register</button> or&nbsp;
                 <Link to="/login">login</Link>
             </form>
         </>

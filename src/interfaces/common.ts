@@ -3,6 +3,8 @@ import { IUser } from './user';
 
 export interface ICommonSlice {
     timestamp: number;
+    errors: string[];
+    tickIntervalId: number | null;
 }
 
 export interface ITick {
@@ -10,4 +12,5 @@ export interface ITick {
     users: IUser[];
     messages: IMessage[];
     timestamp: number;
+    errors: string[];
 }

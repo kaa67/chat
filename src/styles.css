@@ -16,3 +16,18 @@ a {
     color:darkblue;
     font-weight: bold;
 }
+
+small {
+    color: #cccccc;
+}
+
+.error {
+    margin-top: 8px;
+}
+
+.error span {
+    color: #222222;
+    background-color: #ffbbbb;
+    text-shadow: 2px 2px 2px gray;
+    padding: 4px;
+}

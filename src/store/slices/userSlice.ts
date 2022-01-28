@@ -13,23 +13,48 @@ export const userSlice = createSlice({
     reducers: {
         setProfile: (state, action: PayloadAction<IUser | null>) => {
             state.profile = action.payload;
-            if (
-                action.payload?.id &&
-                !state.users.find((u) => u.email === action.payload?.id)
-            ) {
-                state.users.push(action.payload);
-            }
-        },
-        selectProfile: (state, action: PayloadAction<string>) => {
-            state.profile =
-                state.users.find((u) => u.email === action.payload) || null;
         },
         setUsers: (state, action: PayloadAction<IUser[]>) => {
             state.users = action.payload;
         },
     },
     extraReducers: {
-        'tick/fetchTick/fulfilled': (
+        'tick/tick/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/login/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/register/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'message/add/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/logout/fulfilled': (
+            state: IUserSlice,
+            action: PayloadAction<ITick>,
+        ) => {
+            state.profile = action.payload.profile;
+            state.users = action.payload.users;
+        },
+        'user/update/fulfilled': (
             state: IUserSlice,
             action: PayloadAction<ITick>,
         ) => {
@@ -39,6 +64,6 @@ export const userSlice = createSlice({
     },
 });
 
-export const { setProfile, setUsers, selectProfile } = userSlice.actions;
+export const { setProfile, setUsers } = userSlice.actions;
 
 export default userSlice.reducer;

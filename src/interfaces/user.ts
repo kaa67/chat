@@ -1,7 +1,18 @@
+export interface IUserLogin {
+    email: string;
+    password: string;
+}
+
+export interface IUserRegister {
+    name: string;
+    email: string;
+    password?: string;
+}
+
 export interface IUser {
-    id?: null | number;
-    name: null | string;
-    email: null | string;
+    id: number;
+    name: string;
+    email: string;
 }
 
 export interface IUserSlice {

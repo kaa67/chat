@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getIsGuest } from '../store/selectors/userSelector';
-import { selectProfile } from '../store/slices/userSlice';
+import { clearErrors } from '../store/slices/commonSlice';
+import { userLogin } from '../store/thunks/userThunk';
 
 const Login = () => {
     const isGuest = useSelector(getIsGuest);
@@ -17,9 +18,12 @@ const Login = () => {
 
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string;
-        dispatch(selectProfile(email));
-        navigate('/', { replace: true });
+        const password = formData.get('password') as string;
+        dispatch(userLogin({ email, password }));
+        // navigate('/', { replace: true });
     };
+
+    const clearErr = () => dispatch(clearErrors);
 
     return (
         <>
@@ -27,12 +31,22 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="login_email">e-mail</label>
                 <br />
-                <input name="email" id="login_email" type="email" />
+                <input
+                    onChange={clearErr}
+                    name="email"
+                    id="login_email"
+                    type="email"
+                />
                 <br />
                 <br />
                 <label htmlFor="login_password">Password</label>
                 <br />
-                <input name="password" id="login_password" type="password" />
+                <input
+                    onChange={clearErr}
+                    name="password"
+                    id="login_password"
+                    type="password"
+                />
                 <br />
                 <br />
                 <button type="submit">Login</button>&nbsp; Don&rsquo;t have your
