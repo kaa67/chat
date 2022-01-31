@@ -12,7 +12,9 @@
 
 # production
 /front/build
+/front/dist
 /back/build
+/back/dist
 
 # misc
 /front/.DS_Store
